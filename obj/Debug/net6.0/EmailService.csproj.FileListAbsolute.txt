@@ -33,3 +33,5 @@ Z:\Programacao\Backend\net c#\EmailService-dotnet\EmailService\bin\Debug\net6.0\
 Z:\Programacao\Backend\net c#\EmailService-dotnet\EmailService\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
 Z:\Programacao\Backend\net c#\EmailService-dotnet\EmailService\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 Z:\Programacao\Backend\net c#\EmailService-dotnet\EmailService\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+Z:\Programacao\Backend\net c#\EmailService-dotnet\EmailService\bin\Debug\net6.0\RabbitMQ.Client.dll
+Z:\Programacao\Backend\net c#\EmailService-dotnet\EmailService\bin\Debug\net6.0\System.Threading.Channels.dll

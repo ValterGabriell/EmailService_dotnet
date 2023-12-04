@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmailService.ports;
 
-public interface EmailServicePort
+public interface IEmailServicePort
 {
     void sendEmail(EmailDto emailDto);
 }

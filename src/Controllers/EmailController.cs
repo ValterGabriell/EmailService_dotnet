@@ -7,9 +7,9 @@ namespace EmailService.Controllers;
 [Route("/api/v1/")]
 public class EmailController : ControllerBase
 {
-    private readonly EmailServicePort _emailServicePort;
+    private readonly IEmailServicePort _emailServicePort;
 
-    public EmailController(EmailServicePort emailServicePort)
+    public EmailController(IEmailServicePort emailServicePort)
     {
         _emailServicePort = emailServicePort;
     }

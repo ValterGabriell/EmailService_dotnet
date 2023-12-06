@@ -13,6 +13,7 @@ public class EmailService : IEmailServicePort
 
     public void sendEmail(EmailDto emailDto)
     {
+        emailDto.ValidatingFields();
         _emailInfra.sendEmail(emailDto);
     }
 }

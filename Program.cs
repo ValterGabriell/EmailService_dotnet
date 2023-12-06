@@ -12,7 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEmailServicePort, EmailService.Domain.EmailService>();
 builder.Services.AddScoped<IEmailInfraPort, EmailService.Infra.SendEmailImpl>();
-builder.Services.AddHostedService<RabbitMqConsumer>();
+builder.Services.AddScoped<RabbitMqConsumer>();
+builder.Services.AddHostedService(provider => provider.GetRequiredService<RabbitMqConsumer>());
 builder.Services.Configure<RabbitMqConfiguration>(builder.Configuration.GetSection("RabbitMQ"));
 
 var app = builder.Build();

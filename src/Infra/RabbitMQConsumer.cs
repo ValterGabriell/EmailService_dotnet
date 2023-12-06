@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using EmailService.Dto;
-using EmailService.Infra;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
@@ -12,8 +11,12 @@ public class RabbitMqConsumer : BackgroundService
 {
     private readonly RabbitMqConfiguration _configuration;
     private readonly IModel _model;
-    public RabbitMqConsumer(IOptions<RabbitMqConfiguration> options)
+
+    private readonly IEmailInfraPort _emailInfraPort;
+
+    public RabbitMqConsumer(IOptions<RabbitMqConfiguration> options, IEmailInfraPort emailInfraPort)
     {
+        _emailInfraPort = emailInfraPort;
         _configuration = options.Value;
         var factory = new ConnectionFactory
         {
@@ -39,9 +42,9 @@ public class RabbitMqConsumer : BackgroundService
         {
             var contentArray = eventArgs.Body.ToArray();
             var contentString = Encoding.UTF8.GetString(contentArray);
-            
-            var emailDto = JsonConvert.DeserializeObject<EmailDto>(contentString);
 
+            var emailDto = JsonConvert.DeserializeObject<EmailDto>(contentString);
+            _emailInfraPort.sendEmail(emailDto);
 
             _model.BasicAck(eventArgs.DeliveryTag, false);
         };
